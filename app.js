@@ -97,11 +97,11 @@ app.get('/library', async (req, res) => {
                 searchTerms: ['picatrix']
             },
             {
-                title: 'Necronomicon',
-                description: 'A fictional grimoire created by H.P. Lovecraft, said to contain forbidden knowledge about ancient deities and cosmic horrors.',
-                author: 'Abdul Alhazred',
-                category: 'other',
-                searchTerms: ['necronomicon']
+                title: 'Sworn Book of Honorius',
+        description: 'A 13th-century grimoire claiming to convey the magic practiced by angels before the fall of man.',
+        author: 'Honorius of Thebes',
+        category: 'other',
+        searchTerms: ['honorius', 'sworn book']
             },
             {
                 title: 'Ripley Scroll',
