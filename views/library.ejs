@@ -39,16 +39,16 @@
 
         <div class="book-grid">
             <% if (typeof legendaryBooks !== 'undefined' && legendaryBooks.length > 0) { %>
-                <% 
-                const legendaryImages = {
-                    'Emerald Tablet': 'https://images.booksense.com/images/910/175/9781088175910.jpg',
-                    'Voynich Manuscript': 'https://news.yale.edu/sites/default/files/styles/square_topper_image/public/2025-02/YN-sqr-Voynich-1006247.jpg?h=7eb49add&itok=iv3FR3qM',
-                    'Book of Thoth': 'https://i.pinimg.com/736x/34/80/27/3480277358973a1aec8a10c6c7f3a1e0.jpg',
-                    'Picatrix': 'https://upload.wikimedia.org/wikipedia/commons/2/26/17th_century_Picatrix_title_Istanbul%2C_Hagia_Sophia_2443_crop.png',
-                    'Necronomicon': 'https://static.wikia.nocookie.net/monster/images/e/e3/7D08D604-6091-45B9-B49D-A61ECB85B4B5.jpeg/revision/latest/scale-to-width-down/340?cb=20180608181015',
-                    'Ripley Scroll': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzEC2VLLM8118j54H5TdzaIF8_EDp6poQwiw&s'
-                };
-                %>
+               <% 
+const legendaryImages = {
+    'Emerald Tablet': '/images/books/emerald-tablet.jpg',
+    'Voynich Manuscript': '/images/books/voynich-manuscript.jpg',
+    'Book of Thoth': '/images/books/book-of-thoth.jpg',
+    'Picatrix': '/images/books/picatrix.jpg',
+    'Sworn Book of Honorius': '/images/books/sworn-book-honorius.jpg',
+    'Ripley Scroll': '/images/books/ripley-scroll.jpg'
+};
+%>
                 
                 <% legendaryBooks.forEach((legend, index) => { %>
                     <% 
