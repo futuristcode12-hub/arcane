@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Forbidden Texts - Arcane Archives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="esoteric-bg"></div>
+    
+    <!-- Floating Symbols (same as index) -->
+    <div class="floating-symbol" style="top: 10%; left: 5%;">☿</div>
+    <div class="floating-symbol" style="top: 20%; left: 85%; animation-delay: -5s;">♀</div>
+    <div class="floating-symbol" style="top: 60%; left: 10%; animation-delay: -10s;">♃</div>
+    <div class="floating-symbol" style="top: 80%; left: 80%; animation-delay: -15s;">♄</div>
+    
+    <header>
+        <div class="logo">ARCANE ARCHIVES</div>
+        <nav>
+            <ul>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/library" class="nav-link">Forbidden Library</a></li>
+                <li><a href="/societies" class="nav-link">Secret Societies</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+                <li><a href="/upload-book" class="nav-link active">Upload Books</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Contribute to the Archives</h1>
+        <p>Share your discovered texts and forbidden knowledge with fellow seekers. Upload documents that expand our understanding of the esoteric.</p>
+        
+        <div class="upload-container">
+            <form class="upload-form" action="/upload/book" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Tome Title</label>
+                    <input type="text" id="title" name="title" value="<%= typeof title !== 'undefined' ? title : '' %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author/Attributed To</label>
+                    <input type="text" id="author" name="author" value="<%= typeof author !== 'undefined' ? author : '' %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Arcane Description</label>
+                    <textarea id="description" name="description" rows="4" required><%= typeof description !== 'undefined' ? description : '' %></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Domain of Knowledge</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a domain...</option>
+                        <option value="alchemy" <%= typeof category !== 'undefined' && category === 'alchemy' ? 'selected' : '' %>>Alchemical Processes</option>
+                        <option value="hermetic" <%= typeof category !== 'undefined' && category === 'hermetic' ? 'selected' : '' %>>Hermetic Principles</option>
+                        <option value="qabalah" <%= typeof category !== 'undefined' && category === 'qabalah' ? 'selected' : '' %>>Qabbalistic Paths</option>
+                        <option value="societies" <%= typeof category !== 'undefined' && category === 'societies' ? 'selected' : '' %>>Secret Societies</option>
+                        <option value="other" <%= typeof category !== 'undefined' && category === 'other' ? 'selected' : '' %>>Other Esoteric Matter</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Esoteric Text</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="bookFile" name="bookFile" accept=".pdf,.epub,.txt,.doc,.docx" required>
+                        <label for="bookFile" class="file-input-label">Choose forbidden text (PDF, EPUB, TXT, DOC)</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="understand" required>
+                        I attest this knowledge is meant for enlightened minds only
+                    </label>
+                </div>
+                
+                <button type="submit">Upload to the Archives</button>
+            </form>
+        </div>
+        
+        <p class="warning">By uploading materials, you confirm you have the right to share this knowledge and understand its esoteric nature.</p>
+    </main>
+    
+    <footer>
+        <p>Arcane Archives &copy; <span id="current-year"></span> | Knowledge Forbidden to the Uninitiated</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

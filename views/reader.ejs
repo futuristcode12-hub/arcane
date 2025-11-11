@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading: <%= book.title %> - Arcane Archives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .reader-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: rgba(26, 26, 26, 0.95);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .reader-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .reader-header h1 {
+            margin: 0;
+            text-align: left;
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+        }
+
+        .reader-meta {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .reader-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .reader-controls a {
+            background: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reader-controls a:hover {
+            background: #6b3100;
+            transform: translateY(-2px);
+        }
+
+        .reader-content {
+            padding: 2rem;
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .text-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 5px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 70vh;
+            overflow-y: auto;
+            font-family: 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #e0e0e0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .download-only {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(139, 69, 19, 0.1);
+            border-radius: 5px;
+            border: 2px dashed var(--border-color);
+        }
+
+        .download-only h3 {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .file-info {
+            background: rgba(139, 69, 19, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .file-info p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .pdf-notice {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(139, 69, 19, 0.2);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--text-secondary);
+        }
+
+        .pdf-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .pdf-fallback {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .pdf-fallback a {
+            color: var(--text-secondary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .reader-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .reader-header h1 {
+                text-align: center;
+            }
+            
+            .reader-controls {
+                justify-content: center;
+            }
+            
+            .text-content {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .pdf-container {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="esoteric-bg"></div>
+    
+    <header>
+        <div class="logo">ARCANE ARCHIVES</div>
+        <nav>
+            <ul>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/library" class="nav-link">Forbidden Library</a></li>
+                <li><a href="/societies" class="nav-link">Secret Societies</a></li>
+                <li><a href="/contact" class="nav-link">Contact</a></li>
+                <li><a href="/upload-book" class="nav-link">Upload Books</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="reader-container">
+            <div class="reader-header">
+                <div>
+                    <h1><%= book.title %></h1>
+                    <div class="reader-meta">
+                        by <%= book.author %> | <%= book.category %> | 
+                        Uploaded: <%= book.uploadDate.toLocaleDateString() %>
+                    </div>
+                </div>
+                <div class="reader-controls">
+                    <a href="/library">← Back to Library</a>
+                    <a href="<%= book.filePath %>" download="<%= book.originalName %>">📥 Download</a>
+                </div>
+            </div>
+
+            <div class="file-info">
+                <p><strong>File:</strong> <%= book.originalName %> (<%= (book.fileSize / 1024 / 1024).toFixed(2) %> MB)</p>
+                <p><strong>Description:</strong> <%= book.description %></p>
+                <% if (fileType) { %>
+                    <p><strong>File Type:</strong> <%= fileType %></p>
+                <% } %>
+            </div>
+
+            <div class="reader-content">
+                <% if (isPDF) { %>
+                    <div class="pdf-notice">
+                        <p><strong>📜 Esoteric Text Viewer</strong> - The forbidden knowledge is being unveiled...</p>
+                    </div>
+                    <div class="pdf-container">
+                        <iframe src="<%= book.filePath %>#toolbar=1&navpanes=1&scrollbar=1" 
+                                class="pdf-viewer" 
+                                title="PDF Viewer for <%= book.title %>">
+                            <div class="pdf-fallback">
+                                <p>Your browser does not support PDF viewing.</p>
+                                <p><a href="<%= book.filePath %>" download="<%= book.originalName %>">Download the PDF to unveil its secrets</a></p>
+                            </div>
+                        </iframe>
+                    </div>
+                    <div class="pdf-fallback">
+                        <p>If the ancient text does not appear, <a href="<%= book.filePath %>" download="<%= book.originalName %>">download the PDF here</a></p>
+                    </div>
+                <% } else if (isText) { %>
+                    <div class="text-content">
+                        <%= bookContent %>
+                    </div>
+                <% } else if (isImage) { %>
+                    <img src="<%= book.filePath %>" alt="<%= book.title %>" style="max-width: 100%; height: auto; border-radius: 5px;">
+                <% } else if (isDownloadable) { %>
+                    <div class="download-only">
+                        <h3>🔮 Esoteric Text Detected</h3>
+                        <p>This file format requires specialized viewing. Download the text to access its forbidden knowledge.</p>
+                        <a href="<%= book.filePath %>" download="<%= book.originalName %>">
+                            📥 Download <%= fileType ? fileType.toUpperCase() : 'File' %>
+                        </a>
+                    </div>
+                <% } else { %>
+                    <div class="download-only">
+                        <h3>📜 Ancient Format</h3>
+                        <p>This mystical text format cannot be displayed in the browser. Download to unveil its secrets.</p>
+                        <a href="<%= book.filePath %>" download="<%= book.originalName %>">
+                            📥 Acquire Forbidden Knowledge
+                            <% if (fileType) { %>
+                                (<%= fileType.toUpperCase() %>)
+                            <% } %>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Arcane Archives &copy; <span id="current-year"></span> | Knowledge Forbidden to the Uninitiated</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // PDF loading indicator
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.querySelector('.pdf-viewer');
+            if (iframe) {
+                iframe.onload = function() {
+                    console.log('PDF loaded successfully');
+                };
+                iframe.onerror = function() {
+                    console.log('PDF failed to load');
+                    const container = document.querySelector('.pdf-container');
+                    container.innerHTML = `
+                        <div class="pdf-fallback" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                            <h3>🔮 PDF Loading Failed</h3>
+                            <p>The ancient text could not be unveiled in the browser.</p>
+                            <p><a href="<%= book.filePath %>" download="<%= book.originalName %>" style="color: var(--text-secondary); text-decoration: underline;">
+                                Download the PDF to access its secrets
+                            </a></p>
+                        </div>
+                    `;
+                };
+            }
+            
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcane Archives - Forbidden Knowledge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Full Page Background -->
+    <div class="esoteric-bg"></div>
+    
+    <!-- Floating Esoteric Symbols -->
+    <div class="floating-symbol" style="top: 10%; left: 5%;">☿</div>
+    <div class="floating-symbol" style="top: 20%; left: 85%; animation-delay: -5s;">♀</div>
+    <div class="floating-symbol" style="top: 60%; left: 10%; animation-delay: -10s;">♃</div>
+    <div class="floating-symbol" style="top: 80%; left: 80%; animation-delay: -15s;">♄</div>
+    <div class="floating-symbol" style="top: 40%; left: 90%; animation-delay: -7s;">☉</div>
+    <div class="floating-symbol" style="top: 30%; left: 15%; animation-delay: -12s;">☽</div>
+    
+    <header>
+        <div class="logo">ARCANE ARCHIVES</div>
+        <nav>
+            <ul>
+                <li><a href="/" class="nav-link <%= page === 'home' ? 'active' : '' %>">Home</a></li>
+                <li><a href="/library" class="nav-link <%= page === 'library' ? 'active' : '' %>">Forbidden Library</a></li>
+                <li><a href="/societies" class="nav-link <%= page === 'societies' ? 'active' : '' %>">Secret Societies</a></li>
+                <li><a href="/contact" class="nav-link <%= page === 'contact' ? 'active' : '' %>">Contact</a></li>
+                <li><a href="/upload-book" class="nav-link <%= page === 'upload' ? 'active' : '' %>">Upload Books</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Home Page Content -->
+        <div class="welcome-section">
+            <h1>Welcome to the Arcane Archives</h1>
+            <p>Within these digital halls lies knowledge deemed too dangerous, too profound, or too unsettling for common consumption. Proceed with caution, for what you learn here may forever change your perception of reality.</p>
+            <p>The doors to forbidden wisdom now stand open before you...</p>
+        </div>
+        
+        <h2>Featured Esoteric Topics</h2>
+        <div class="featured-items">
+            <div class="item-card">
+                <div class="item-bg" style="background-image: url('https://static.wikia.nocookie.net/monster/images/e/e3/7D08D604-6091-45B9-B49D-A61ECB85B4B5.jpeg/revision/latest/scale-to-width-down/340?cb=20180608181015')"></div>
+                <div class="item-content">
+                    <h3>The Necronomicon</h3>
+                    <p>A fictional grimoire created by H.P. Lovecraft, said to contain forbidden knowledge about ancient deities and cosmic horrors.</p>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-bg" style="background-image: url('https://images.squarespace-cdn.com/content/v1/58c46117d2b8573ccaeaafca/1673895510183-TPJO60HLROHZ722QWXB0/Screenshot+2023-01-16+at+10.58.07+AM.png?format=1500w')"></div>
+                <div class="item-content">
+                    <h3>Hermetic Principles</h3>
+                    <p>The seven universal principles that form the foundation of all occult philosophies, as described in the Kybalion.</p>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-bg" style="background-image: url('https://images.unsplash.com/photo-1589994965851-a8f479c573a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+                <div class="item-content">
+                    <h3>Qabbalistic Mysteries</h3>
+                    <p>Esoteric interpretations of Jewish mysticism that explore the nature of God, creation, and the soul's journey.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="warning">WARNING: The knowledge contained within these archives may challenge your fundamental beliefs about reality. Proceed with an open yet discerning mind.</p>
+    </main>
+    
+    <footer>
+        <p>Arcane Archives &copy; <span id="current-year"></span> | Knowledge Forbidden to the Uninitiated</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

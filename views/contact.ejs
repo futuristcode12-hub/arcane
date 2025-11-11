@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Arcane Archives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="esoteric-bg"></div>
+    
+    <!-- Floating Esoteric Symbols -->
+    <div class="floating-symbol" style="top: 10%; left: 5%;">☿</div>
+    <div class="floating-symbol" style="top: 20%; left: 85%; animation-delay: -5s;">♀</div>
+    <div class="floating-symbol" style="top: 60%; left: 10%; animation-delay: -10s;">♃</div>
+    <div class="floating-symbol" style="top: 80%; left: 80%; animation-delay: -15s;">♄</div>
+    
+    <header>
+        <div class="logo">ARCANE ARCHIVES</div>
+        <nav>
+            <ul>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/library" class="nav-link">Forbidden Library</a></li>
+                <li><a href="/societies" class="nav-link">Secret Societies</a></li>
+                <li><a href="/contact" class="nav-link active">Contact</a></li>
+                <li><a href="/upload-book" class="nav-link">Upload Books</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Seek Further Knowledge</h1>
+        <p>If you wish to delve deeper into these mysteries or have discovered esoteric knowledge of your own, you may contact the archivists. Be warned: not all inquiries receive responses, and those that do may not provide the answers you expect.</p>
+        
+        <div class="contact-form">
+            <form id="esoteric-contact">
+                <div class="form-group">
+                    <label for="name">Your Arcane Designation</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Scrying Mirror Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Nature of Inquiry</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a topic...</option>
+                        <option value="alchemy">Alchemical Processes</option>
+                        <option value="hermetic">Hermetic Principles</option>
+                        <option value="qabalah">Qabbalistic Paths</option>
+                        <option value="societies">Secret Societies</option>
+                        <option value="other">Other Esoteric Matter</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Query</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="initiate" required>
+                        I understand that pursuing forbidden knowledge carries inherent risks to my perception of reality.
+                    </label>
+                </div>
+                
+                <button type="submit">Send Through the Ether</button>
+            </form>
+        </div>
+        
+        <p class="warning">By contacting us, you acknowledge that the Arcane Archives assumes no responsibility for any shifts in consciousness, paradigm collapses, or existential crises that may result from engaging with the materials provided.</p>
+    </main>
+    
+    <footer>
+        <p>Arcane Archives &copy; <span id="current-year"></span> | Knowledge Forbidden to the Uninitiated</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
